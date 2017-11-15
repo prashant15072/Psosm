@@ -50,9 +50,63 @@
 								</div>
 								<div class="inner columns aligned">
 									<div class="span-2-75">
-										<a href="#" class="button large">Follow Users</a><br><br>
-										<a href="#" class="button large">DM Users</a><br><br>
-										<a href="#" class="button large">Tweet User</a><br>
+										{% if action_performed %}
+											<center><h5 class="majaor">{{action_performed}}</h5></center>
+										{% endif %}
+										<a href="{% url 'follow'%}" class="button ">Follow 3 Random Users</a><br><br>
+										<form method="post" name="form" action="{% url 'dm' %}">
+											{% csrf_token %}
+											<div class="field half">
+												<input type="text" name="message" id="message1" value="" placeholder="message" />
+											</div>
+											<div class="field half">
+												<input type="submit" class="button" value="DM 3 random Users">
+											</div>
+										</form>
+										<form method="post" name="form" action="{% url 'tweet' %}">
+											{% csrf_token %}
+											<div class="field half">
+												<input type="text" name="message" id="message2" value="" placeholder="Tweet" />
+											</div>
+											<div class="field half">
+												<input type="submit" class="button" value="Tweet for 3 Random Users">
+											</div>
+										</form>
+										<form method="post" name="form" action="{% url 'specific_user_follow' %}">
+											{% csrf_token %}
+											<div class="field half">
+												<input type="text" name="username" id="message3" value="" placeholder="Username" />
+											</div>
+											<div class="field half">
+												<input type="submit" class="button" value="Follow User">
+											</div>
+										</form>
+
+										<form method="post" name="form" action="{% url 'specific_user_dm' %}">
+											{% csrf_token %}
+											<div class="field third">
+												<input type="text" name="username" id="message4" value="" placeholder="Username" />
+											</div>
+											<div class="field third">
+												<input type="text" name="message" id="message5" value="" placeholder="message" />
+											</div>
+											<div class="field third">
+												<input type="submit" class="button" value="DM User">
+											</div>
+										</form>
+										<form method="post" name="form" action="{% url 'specific_user_tweet' %}">
+											{% csrf_token %}
+											<div class="field third">
+												<input type="text" name="username" id="message6" value="" placeholder="Username" />
+											</div>
+											<div class="field third">
+												<input type="text" name="message" id="message7" value="" placeholder="Tweet" />
+											</div>
+											<div class="field third">
+												<input type="submit" class="button" value="Tweet For User">
+											</div>
+										</form>
+
 									</div>
 								</div>
 							</section>

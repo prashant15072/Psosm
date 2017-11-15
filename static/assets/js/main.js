@@ -756,3 +756,17 @@
 		});
 
 })(jQuery);
+
+function followUsers() {
+    // Get the data from the form fields here: e.g.:
+
+    $.ajax({
+        url: '/follow',
+        success: function(data, textStatus, xhr) {
+            // Handle success scenario here.
+        },
+        error: function(xhr, status, error) {
+            // Handle fail scenario here.
+        }
+    )};
+}
